@@ -1,0 +1,14 @@
+.blue-color {
+    background-color: #6B75DF !important;
+}
+
+#current-city-li {
+    list-style-type: none;
+}
+
+#button {
+    border: none;
+    margin-top: 5px;
+    background-color:#6B75DF;
+    color: #fff;
+}
