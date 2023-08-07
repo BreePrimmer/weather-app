@@ -22,11 +22,11 @@
         <!-- Large card displaying the current date's weather. -->
         <section class="pt-3 mx-5 w-60">
         <div class="border border-5 p-1">
-            <header class="fs-2">Current City</header>
+            <header id="cityText" class="fs-2">Current City</header>
             <ul id="current-city-li">
-                <li class="fs-5">Temp:</li>
-                <li class="fs-5">Wind:</li>
-                <li class="fs-5">Humidity:</li>
+                <li id="currentTemp" class="fs-5">Temp:</li>
+                <li id="currentWind" class="fs-5">Wind:</li>
+                <li id="currentHumid" class="fs-5">Humidity:</li>
             </ul>
         </div>
 
@@ -35,57 +35,57 @@
             <header class="p-1 fs-2">5-Day Forecast:</header>
                 <div class="card-container d-flex justify-content-evenly">
                     <div class="card-body px-4 pt-3 mx-3 blue-color" style="width: 18 rem;">
-                        <div class="card-header fs-5 text-white">
+                        <div id='first-day' class="card-header fs-5 text-white">
                             Weather Date
                         </div>
                         <ul class="list-group list-group-flush blue-color">
-                            <li class="list-group-item blue-color text-white">Temp:</li>
-                            <li class="list-group-item blue-color text-white">Wind:</li>
-                            <li class="list-group-item blue-color text-white">Humidity:</li>
+                            <li id='first-temp' class="list-group-item blue-color text-white">Temp:</li>
+                            <li id='first-wind' class="list-group-item blue-color text-white">Wind:</li>
+                            <li id='first-humid' class="list-group-item blue-color text-white">Humidity:</li>
                         </ul>
                     </div>
 
                     <div class="card-body px-4 pt-3 mx-3 blue-color" style="width: 18 rem;">
-                        <div class="card-header fs-5 text-white">
+                        <div id='second-day' class="card-header fs-5 text-white">
                             Weather Date
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item blue-color text-white">Temp:</li>
-                            <li class="list-group-item blue-color text-white">Wind:</li>
-                            <li class="list-group-item blue-color text-white">Humidity:</li>
+                            <li id='second-temp' class="list-group-item blue-color text-white">Temp:</li>
+                            <li id='second-wind' class="list-group-item blue-color text-white">Wind:</li>
+                            <li id='second-humid' class="list-group-item blue-color text-white">Humidity:</li>
                         </ul>
                     </div>
 
                     <div class="card-body px-4 pt-3 mx-3 blue-color" style="width: 18 rem;">
-                        <div class="card-header fs-5 text-white">
+                        <div id='third-day' class="card-header fs-5 text-white">
                             Weather Date
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item blue-color text-white">Temp:</li>
-                            <li class="list-group-item blue-color text-white">Wind:</li>
-                            <li class="list-group-item blue-color text-white">Humidity:</li>
+                            <li id='third-temp' class="list-group-item blue-color text-white">Temp:</li>
+                            <li id='third-wind' class="list-group-item blue-color text-white">Wind:</li>
+                            <li id='third-humid' class="list-group-item blue-color text-white">Humidity:</li>
                         </ul>
                     </div>
 
                     <div class="card-body px-4 pt-3 mx-3 blue-color" style="width: 18 rem;">
-                        <div class="card-header fs-5 text-white">
+                        <div id='fourth-day' class="card-header fs-5 text-white">
                             Weather Date
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item blue-color text-white">Temp:</li>
-                            <li class="list-group-item blue-color text-white">Wind:</li>
-                            <li class="list-group-item blue-color text-white">Humidity:</li>
+                            <li id='fourth-temp' class="list-group-item blue-color text-white">Temp:</li>
+                            <li id='fourth-wind' class="list-group-item blue-color text-white">Wind:</li>
+                            <li id='fourth-humid' class="list-group-item blue-color text-white">Humidity:</li>
                         </ul>
                     </div>
 
                     <div class="card-body px-4 py-3 mx-3 blue-color" style="width: 18 rem;">
-                        <div class="card-header fs-5 text-white">
+                        <div id='fifth-day' class="card-header fs-5 text-white">
                             Weather Date
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item blue-color text-white">Temp:</li>
-                            <li class="list-group-item blue-color text-white">Wind:</li>
-                            <li class="list-group-item blue-color text-white">Humidity:</li>
+                            <li id='fifth-temp' class="list-group-item blue-color text-white">Temp:</li>
+                            <li id='fifth-wind' class="list-group-item blue-color text-white">Wind:</li>
+                            <li id='fifth-humid' class="list-group-item blue-color text-white">Humidity:</li>
                         </ul>
                     </div>
                 </div>
@@ -94,8 +94,8 @@
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 	<script src="./assets/script.js"></script>
   </body>
 </html>
