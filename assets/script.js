@@ -1,14 +1,8 @@
-// const cityText = $("#cityText");
-
-// function citySearch() {
-//     let userCity = $('#search').val()
-//     console.log(userCity)
-// }
-
-// citySearch()
+// variables to get the api started
 var userCity = "Minneapolis"
 var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${userCity}&units=imperial&appid=5b17e2c73c5335808a4342f50ecb0203`;
 
+// function to call the api
 function getApi() {
     fetch(requestUrl)
         .then(function (response) {
@@ -17,6 +11,7 @@ function getApi() {
         .then(function (data) {
             console.log(data);
 
+            // function that gathers the weather and displays it for current city and date
             function getCurrentWeather() {
                 // gets current city and date
                 let currentCity = data.city.name;
@@ -24,17 +19,15 @@ function getApi() {
                 let currentDate = dayjs().format('MM/DD/YYYY');
                 console.log(currentCity)
 
+                // gets the weather icon
                 let iconId = data.list[0].weather[0].icon;
                 console.log(iconId) 
 
                 let currentIcon = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconId + '@2x.png'})
 
-                currentIcon.appendTo('header')
+                $(".image-div-current").append(currentIcon)
 
                 cityText.text(currentCity + " " + currentDate);
-
-
-
 
                 // gets weather for current date
                 let currentTemp = data.list[0].main.temp;
@@ -62,6 +55,12 @@ function getApi() {
                 let firstHumid = data.list[7].main.humidity;
                 $('#first-humid').text("Humidity: " + firstHumid + " %")
 
+                let iconIdOne = data.list[7].weather[0].icon;
+
+                let currentIconOne = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdOne + '@2x.png'})
+
+                $(".image-div-one").append(currentIconOne)
+
                 // second day ---------------------------------------
                 let secondDay = dayjs().add(2, 'day').format('MM/DD/YYYY');
                 $('#second-day').text(secondDay)
@@ -74,6 +73,12 @@ function getApi() {
 
                 let secondHumid = data.list[15].main.humidity;
                 $('#second-humid').text("Humidity: " + secondHumid + " %")
+
+                let iconIdTwo = data.list[15].weather[0].icon;
+
+                let currentIconTwo = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdTwo + '@2x.png'})
+
+                $(".image-div-two").append(currentIconTwo)
 
                 // third day ----------------------------------------
                 let thirdDay = dayjs().add(3, 'day').format('MM/DD/YYYY');
@@ -88,6 +93,12 @@ function getApi() {
                 let thirdHumid = data.list[23].main.humidity;
                 $('#third-humid').text("Humidity: " + thirdHumid + " %")
 
+                let iconIdThree = data.list[23].weather[0].icon;
+
+                let currentIconThree = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdThree + '@2x.png'})
+
+                $(".image-div-three").append(currentIconThree)
+
                 // fourth day ---------------------------------------
                 let fourthDay = dayjs().add(4, 'day').format('MM/DD/YYYY');
                 $('#fourth-day').text(fourthDay)
@@ -100,6 +111,11 @@ function getApi() {
 
                 let fourthHumid = data.list[31].main.humidity;
                 $('#fourth-humid').text("Humidity: " + fourthHumid + " %")
+                let iconIdFour = data.list[31].weather[0].icon;
+
+                let currentIconFour = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdFour + '@2x.png'})
+
+                $(".image-div-four").append(currentIconFour)
 
                 // fifth day ----------------------------------------
                 let fifthDay = dayjs().add(5, 'day').format('MM/DD/YYYY');
@@ -113,6 +129,12 @@ function getApi() {
 
                 let fifthHumid = data.list[39].main.humidity;
                 $('#fifth-humid').text("Humidity: " + fifthHumid + " %")
+
+                let iconIdFive = data.list[39].weather[0].icon;
+
+                let currentIconFive = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdFive + '@2x.png'})
+
+                $(".image-div-five").append(currentIconFive)
             }
             getForecast()
 
@@ -130,6 +152,19 @@ searchButton.addEventListener("click", function() {
         var userCity = $('#search').val()
         console.log(userCity)
 
+        event.preventDefault()
+        var userCity = $('#search').val()
+        console.log(userCity)
+        localStorage.setItem(userCity, userCity)
+
+        var searchedCity = localStorage.getItem(userCity)
+        var searchedCityText = document.createTextNode(searchedCity)
+        var cityList = document.createElement('li')
+        cityList.appendChild(searchedCityText)
+
+        var searchHistory = document.getElementById("search-history")
+        searchHistory.appendChild(cityList)
+
         var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${userCity}&units=imperial&appid=5b17e2c73c5335808a4342f50ecb0203`;
 
         function getApi() {
@@ -140,6 +175,7 @@ searchButton.addEventListener("click", function() {
                 .then(function (data) {
                     console.log(data);
         
+                    // function that gathers the weather and displays it for current city and date
                     function getCurrentWeather() {
                         // gets current city and date
                         let currentCity = data.city.name;
@@ -147,17 +183,15 @@ searchButton.addEventListener("click", function() {
                         let currentDate = dayjs().format('MM/DD/YYYY');
                         console.log(currentCity)
         
+                        // gets the weather icon
                         let iconId = data.list[0].weather[0].icon;
                         console.log(iconId) 
         
                         let currentIcon = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconId + '@2x.png'})
         
-                        currentIcon.appendTo('header')
+                        $(".image-div-current").append(currentIcon)
         
                         cityText.text(currentCity + " " + currentDate);
-        
-        
-        
         
                         // gets weather for current date
                         let currentTemp = data.list[0].main.temp;
@@ -185,6 +219,12 @@ searchButton.addEventListener("click", function() {
                         let firstHumid = data.list[7].main.humidity;
                         $('#first-humid').text("Humidity: " + firstHumid + " %")
         
+                        let iconIdOne = data.list[7].weather[0].icon;
+        
+                        let currentIconOne = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdOne + '@2x.png'})
+        
+                        $(".image-div-one").append(currentIconOne)
+        
                         // second day ---------------------------------------
                         let secondDay = dayjs().add(2, 'day').format('MM/DD/YYYY');
                         $('#second-day').text(secondDay)
@@ -197,6 +237,12 @@ searchButton.addEventListener("click", function() {
         
                         let secondHumid = data.list[15].main.humidity;
                         $('#second-humid').text("Humidity: " + secondHumid + " %")
+        
+                        let iconIdTwo = data.list[15].weather[0].icon;
+        
+                        let currentIconTwo = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdTwo + '@2x.png'})
+        
+                        $(".image-div-two").append(currentIconTwo)
         
                         // third day ----------------------------------------
                         let thirdDay = dayjs().add(3, 'day').format('MM/DD/YYYY');
@@ -211,6 +257,12 @@ searchButton.addEventListener("click", function() {
                         let thirdHumid = data.list[23].main.humidity;
                         $('#third-humid').text("Humidity: " + thirdHumid + " %")
         
+                        let iconIdThree = data.list[23].weather[0].icon;
+        
+                        let currentIconThree = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdThree + '@2x.png'})
+        
+                        $(".image-div-three").append(currentIconThree)
+        
                         // fourth day ---------------------------------------
                         let fourthDay = dayjs().add(4, 'day').format('MM/DD/YYYY');
                         $('#fourth-day').text(fourthDay)
@@ -223,6 +275,11 @@ searchButton.addEventListener("click", function() {
         
                         let fourthHumid = data.list[31].main.humidity;
                         $('#fourth-humid').text("Humidity: " + fourthHumid + " %")
+                        let iconIdFour = data.list[31].weather[0].icon;
+        
+                        let currentIconFour = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdFour + '@2x.png'})
+        
+                        $(".image-div-four").append(currentIconFour)
         
                         // fifth day ----------------------------------------
                         let fifthDay = dayjs().add(5, 'day').format('MM/DD/YYYY');
@@ -236,13 +293,21 @@ searchButton.addEventListener("click", function() {
         
                         let fifthHumid = data.list[39].main.humidity;
                         $('#fifth-humid').text("Humidity: " + fifthHumid + " %")
+        
+                        let iconIdFive = data.list[39].weather[0].icon;
+        
+                        let currentIconFive = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconIdFive + '@2x.png'})
+        
+                        $(".image-div-five").append(currentIconFive)
                     }
                     getForecast()
         
         
                 })
         }
-        getApi();
+        
+        getApi()
+      
     })
 
 userInput.addEventListener("keypress", function(event) {
@@ -279,14 +344,14 @@ userInput.addEventListener("keypress", function(event) {
         
                         let iconId = data.list[0].weather[0].icon;
                         console.log(iconId) 
+
+                        
         
                         let currentIcon = $('<img />', {src: 'https://openweathermap.org/img/wn/' + iconId + '@2x.png'})
-        
-                        currentIcon.appendTo('header')
-        
+
+                        $(".image-div-current").append(currentIcon)
+
                         cityText.text(currentCity + " " + currentDate);
-        
-        
         
         
                         // gets weather for current date
@@ -377,6 +442,24 @@ userInput.addEventListener("keypress", function(event) {
         return;
     }
 })
+
+function generateList(){
+    for (var i = 0; i < localStorage.length; i++) {
+        var cityId = localStorage.key(i)
+        console.log(cityId)
+        if (cityId == userCity) {
+            var searchedCity = localStorage.getItem(userCity)
+            var searchedCityText = document.createTextNode(searchedCity)
+            var cityList = document.createElement('li')
+            cityList.appendChild(searchedCityText)
+
+            var searchHistory = document.getElementById("search-history")
+            searchHistory.appendChild(cityList)
+        }
+    }
+}
+
+generateList()
 
 // let userCity = $("#search").val()
 // console.log(userCity)
