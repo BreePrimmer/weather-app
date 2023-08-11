@@ -41,6 +41,7 @@ function getApi() {
             }
             getCurrentWeather()
 
+            // gets and displays data for the next five days.
             function getForecast() {
                 // first day ----------------------------------------
                 let firstDay = dayjs().add(1, 'day').format('MM/DD/YY');
@@ -141,22 +142,20 @@ function getApi() {
 
         })
 }
-
 getApi()
 
-var userInput = document.getElementById("search")
+// gets user input and the search button
+let userInput = document.getElementById("search")
+let searchButton = document.getElementById('button')
 
-var searchButton = document.getElementById('button')
-
+// event listener to use the data that is searched when you click on the search button.
 searchButton.addEventListener("click", function() {
-        var userCity = $('#search').val()
-        console.log(userCity)
-
-        event.preventDefault()
+        // gets user input and stores it in local storage
         var userCity = $('#search').val()
         console.log(userCity)
         localStorage.setItem(userCity, userCity)
 
+        // makes the list under search bar.
         var searchedCity = localStorage.getItem(userCity)
         var searchedCityText = document.createTextNode(searchedCity)
         var cityList = document.createElement('li')
@@ -165,6 +164,7 @@ searchButton.addEventListener("click", function() {
         var searchHistory = document.getElementById("search-history")
         searchHistory.appendChild(cityList)
 
+        // the new user city is used in the api.
         var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${userCity}&units=imperial&appid=5b17e2c73c5335808a4342f50ecb0203`;
 
         function getApi() {
@@ -310,6 +310,8 @@ searchButton.addEventListener("click", function() {
       
     })
 
+// event listener that is used when the user enters the data with the enter key.
+// essentially does the same thing as the function above but reapplied here.
 userInput.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         event.preventDefault()
@@ -443,6 +445,7 @@ userInput.addEventListener("keypress", function(event) {
     }
 })
 
+// here I tried to make a list with the local storage but it is currently not working.
 function generateList(){
     for (var i = 0; i < localStorage.length; i++) {
         var cityId = localStorage.key(i)
@@ -460,6 +463,3 @@ function generateList(){
 }
 
 generateList()
-
-// let userCity = $("#search").val()
-// console.log(userCity)
